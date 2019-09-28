@@ -12,7 +12,7 @@ let cmp_score = (score, prevScore)=>{
 };
 
 copyCatBot.prototype.tellyourPlay = function(){
-    if(!isNull(prevScore)){
+    if(!isNull(this.prevScore)){
        switch(cmp_score(this.score - this.prevScore)){
            case 0:
                 return 0;
