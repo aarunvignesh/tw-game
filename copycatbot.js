@@ -1,35 +1,44 @@
-const player = require("./player");
+const player = require("./player"),
+    {chances, CHEAT, COOPERATE} = require("./contants"),
+    rule = require("./rule"),
+    util = require("util");
 
 function copyCatBot(){
     player.call(this);
     this.prevScore = null;
-
     this.prevChoice = null;
 };
 
-let cmp_score = (score, prevScore)=>{
-    return score < 0 ? Math.abs(prevScore) - Math.abs(score) : score - prevScore;
+let calculateSpell = (prevChoice, prevScore, score)=>{
+
+    return possibleChoice = chances.findIndex((x)=>{
+        return rule(chances[prevChoice], x)[0] + prevScore == score;
+    });
 };
+
+
 
 copyCatBot.prototype.tellyourPlay = function(){
-    if(!isNull(this.prevScore)){
-       switch(cmp_score(this.score - this.prevScore)){
-           case 0:
-                return 0;
-           case 1:
-                return this.prevChoice == 0 ? 1 : 0;
-           case 2:
-                return 1;
-       }
+    if(this.prevChoice != null){
+       const spell = calculateSpell(this.prevChoice, this.prevScore, this.score);
+       this.prevChoice = spell;
+       return spell;
     }
-    this.prevChoice = this.score;
-    return 1;
+    this.prevChoice = 0;
+    return 0;
 };
 
-copyCatBot.prototype.addScore = function(){
-    this.prevScore = score;
+copyCatBot.prototype.addScore = function(score){
+    if(this.prevScore == null){
+        this.prevScore = 0;
+    }
+    else{
+        this.prevScore = this.score;
+    }
     this.score += score;
 };
-copyCatBot.prototype = player.prototype;
+
+
+util.inherits(copyCatBot, player);
 
 module.exports = copyCatBot;

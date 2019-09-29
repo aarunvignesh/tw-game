@@ -1,32 +1,11 @@
-const COOPERATE= "Cooperate" ,
-        CHEAT = "Cheat",
-    chances = [COOPERATE, CHEAT],
-    util = require("util"),
+const util = require("util"),
     kindBot = require("./kindbot"),
-    evilBot = require("./kindbot"),
-    player = require("./player");
+    evilBot = require("./evilbot"),
+    copyCatBot = require("./copycatbot"),
+    player = require("./player"),
+    {chances, CHEAT, COOPERATE} = require("./contants"),
+    rule = require("./rule");
 
-function rule(p1_spell, p2_spell){
-    if(p1_spell == p2_spell){
-        
-        if(p1_spell == COOPERATE){
-            return [2,2];
-        }
-        else{
-            return [0,0];
-        }
-    }
-    else{
-
-        if(p1_spell == COOPERATE){
-            return [-1,3];
-        }
-        else{
-            return [3, -1];
-        }
-
-    }
-}
 
 function game(player_1, player_2){
 
@@ -65,8 +44,8 @@ game.prototype.printwhoWins = function(){
 
 function main(){
 
-    let player_1 = new kindBot()
-       , player_2 = new evilBot();
+    let player_1 = new player()
+       , player_2 = new copyCatBot();
 
     let gameInstance = new game(player_1, player_2);
 

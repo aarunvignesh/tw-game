@@ -1,13 +1,14 @@
-const player = require("./player");
+const player = require("./player"),
+        util = require("util");
 
 function kindBot(){
     player.call(this);
 };
 
 kindBot.prototype.tellyourPlay = function(){
-    return 1;
+    return 0;
 };
 
-kindBot.prototype = player.prototype;
+util.inherits(kindBot, player);
 
 module.exports = kindBot;

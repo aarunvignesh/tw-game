@@ -1,4 +1,5 @@
-const player = require("./player");
+const player = require("./player"),
+    util = require("util");
 
 function evilBot(){
     player.call(this);
@@ -8,7 +9,7 @@ evilBot.prototype.tellyourPlay = function(){
     return 1;
 };
 
-evilBot.prototype = player.prototype;
+util.inherits(evilBot, player);
 
 
 module.exports = evilBot;
