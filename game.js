@@ -1,9 +1,4 @@
 const util = require("util"),
-    kindBot = require("./kindbot"),
-    evilBot = require("./evilbot"),
-    copyCatBot = require("./copycatbot"),
-    player = require("./player"),
-    grudgerBot = require("./grudgerbot"),
     {chances, CHEAT, COOPERATE} = require("./contants"),
     rule = require("./rule");
 
@@ -34,6 +29,8 @@ game.prototype.start = function(rounds = 0){
 
 game.prototype.printwhoWins = function(){
 
+    console.log("P1 : "+this.player_1.getScore() + "\n P2 : "+this.player_2.getScore());
+
     if(this.player_1.getScore() == this.player_2.getScore()){
         console.log("Draw");
         return;
@@ -43,16 +40,12 @@ game.prototype.printwhoWins = function(){
 };
 
 
-function main(){
+game.prototype.getPlayerOneScore = function(){
+    return this.player_1.getScore();
+};
 
-    let player_1 = new copyCatBot(),
-         player_2 = new grudgerBot();
+game.prototype.getPlayerTwoScore = function(){
+    return this.player_2.getScore();
+};
 
-    let gameInstance = new game(player_1, player_2);
-
-    gameInstance.start(3);
-
-    gameInstance.printwhoWins();
-}
-
-main();
+module.exports =  game;

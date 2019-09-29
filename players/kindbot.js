@@ -1,5 +1,5 @@
 const player = require("./player"),
-        {COOPERATE} = require("./contants"),
+        {COOPERATE} = require("./../contants"),
         util = require("util");
 
 function kindBot(){

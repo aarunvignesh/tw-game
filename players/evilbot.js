@@ -1,5 +1,5 @@
 const player = require("./player"),
-    {CHEAT} = require("./contants");
+    {CHEAT} = require("./../contants");
     util = require("util");
 
 function evilBot(){

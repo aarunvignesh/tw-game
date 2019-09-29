@@ -1,6 +1,5 @@
 const copycatBot = require("./copycatBot"),
-{chances, CHEAT, COOPERATE} = require("./contants"),
-rule = require("./rule"),
+{chances, CHEAT, COOPERATE} = require("./../contants"),
 util = require("util");
 
 function grudgerBot(){

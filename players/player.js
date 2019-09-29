@@ -1,11 +1,17 @@
-const {chances} = require("./contants");
+const {chances} = require("./../contants");
 
-function player(){
+function player(name=""){
     this.score = 0;
+    this.opponentMove = null;
+    this.name = name;
 }
 
 player.prototype.tellyourPlay = function(){
     return chances[Math.round(Math.random())];
+};
+
+player.prototype.setopponentMove = function(move){
+    this.opponentMove = move;
 };
 
 player.prototype.addScore = function(score = 0){

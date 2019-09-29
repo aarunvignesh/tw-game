@@ -1,6 +1,6 @@
 const player = require("./player"),
-    {chances, CHEAT, COOPERATE} = require("./contants"),
-    rule = require("./rule"),
+    {chances, CHEAT, COOPERATE} = require("./../contants"),
+    rule = require("./../rule"),
     util = require("util");
 
 function copyCatBot(){
