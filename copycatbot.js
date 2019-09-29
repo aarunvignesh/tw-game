@@ -9,10 +9,10 @@ function copyCatBot(){
     this.prevChoice = null;
 };
 
-let calculateSpell = (prevChoice, prevScore, score)=>{
+copyCatBot.prototype.calculateSpell = (prevChoice, prevScore, score)=>{
 
     return possibleChoice = chances.findIndex((x)=>{
-        return rule(chances[prevChoice], x)[0] + prevScore == score;
+        return rule(prevChoice, x)[0] + prevScore == score;
     });
 };
 
@@ -20,12 +20,12 @@ let calculateSpell = (prevChoice, prevScore, score)=>{
 
 copyCatBot.prototype.tellyourPlay = function(){
     if(this.prevChoice != null){
-       const spell = calculateSpell(this.prevChoice, this.prevScore, this.score);
-       this.prevChoice = spell;
-       return spell;
+       const spell = this.calculateSpell(this.prevChoice, this.prevScore, this.score);
+       this.prevChoice = chances[spell];
+       return this.prevChoice;
     }
-    this.prevChoice = 0;
-    return 0;
+    this.prevChoice = COOPERATE;
+    return COOPERATE;
 };
 
 copyCatBot.prototype.addScore = function(score){

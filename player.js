@@ -1,9 +1,11 @@
+const {chances} = require("./contants");
+
 function player(){
     this.score = 0;
 }
 
 player.prototype.tellyourPlay = function(){
-    return Math.round(Math.random());
+    return chances[Math.round(Math.random())];
 };
 
 player.prototype.addScore = function(score = 0){

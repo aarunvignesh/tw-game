@@ -1,4 +1,5 @@
 const player = require("./player"),
+    {CHEAT} = require("./contants");
     util = require("util");
 
 function evilBot(){
@@ -6,7 +7,7 @@ function evilBot(){
 };
 
 evilBot.prototype.tellyourPlay = function(){
-    return 1;
+    return CHEAT;
 };
 
 util.inherits(evilBot, player);

@@ -1,6 +1,6 @@
 const COOPERATE= "Cooperate" ,
-CHEAT = "Cheat",
-chances = [COOPERATE, CHEAT];
+        CHEAT = "Cheat",
+        chances = [COOPERATE, CHEAT];
 
 module.exports = {
     COOPERATE,

@@ -1,4 +1,5 @@
 const player = require("./player"),
+        {COOPERATE} = require("./contants"),
         util = require("util");
 
 function kindBot(){
@@ -6,7 +7,7 @@ function kindBot(){
 };
 
 kindBot.prototype.tellyourPlay = function(){
-    return 0;
+    return COOPERATE;
 };
 
 util.inherits(kindBot, player);

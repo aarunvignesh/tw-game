@@ -3,6 +3,7 @@ const util = require("util"),
     evilBot = require("./evilbot"),
     copyCatBot = require("./copycatbot"),
     player = require("./player"),
+    grudgerBot = require("./grudgerbot"),
     {chances, CHEAT, COOPERATE} = require("./contants"),
     rule = require("./rule");
 
@@ -19,7 +20,7 @@ game.prototype.start = function(rounds = 0){
         
         console.log("\n>>>>  Round : "+ (i+1));
 
-        const p1_spell = chances[this.player_1.tellyourPlay()], p2_spell =  chances[this.player_2.tellyourPlay()];
+        const p1_spell = this.player_1.tellyourPlay(), p2_spell =  this.player_2.tellyourPlay();
         
         let [p1_score, p2_score] = rule(p1_spell, p2_spell);
 
@@ -44,12 +45,12 @@ game.prototype.printwhoWins = function(){
 
 function main(){
 
-    let player_1 = new player()
-       , player_2 = new copyCatBot();
+    let player_1 = new copyCatBot(),
+         player_2 = new grudgerBot();
 
     let gameInstance = new game(player_1, player_2);
 
-    gameInstance.start(5);
+    gameInstance.start(3);
 
     gameInstance.printwhoWins();
 }
